@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VendorLoan | Modern Lending</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body class="bg-purple-50">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay fixed inset-0 z-[60]">
+        <button class="absolute top-6 right-6 text-white close-mobile-menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <nav class="flex flex-col space-y-6 items-center">
+            <a href="#features" class="mobile-nav-link">Features</a>
+            <a href="#about" class="mobile-nav-link">About</a>
+            <button id="mobileSwitchToLogin" class="text-white bg-purple-700 px-6 py-3 rounded-lg">Login</button>
+            <button id="mobileSwitchToSignup" class="text-white bg-purple-900 px-6 py-3 rounded-lg">Sign Up</button>
+        </nav>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full py-4 bg-purple-100/80 backdrop-blur-sm z-50">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-2xl font-bold text-purple-800">VendorLoan</div>
+            <div class="hidden md:flex space-x-8">
+                <button class="text-purple-600 hover:text-purple-900" onclick="scrollToSection('features')">Features</button>
+                <button class="text-purple-600 hover:text-purple-900" onclick="scrollToSection('about')">About</button>
+                <button class="text-purple-600 hover:text-purple-900" id="loginBtn">Login</button>
+                <button class="bg-purple-900 text-white px-4 py-2 rounded-lg hover:bg-purple-800" id="signupBtn">Sign Up</button>
+            </div>
+            <div class="md:hidden">
+                <button class="text-purple-800 mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="min-h-screen flex items-center pt-20 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div class="flex flex-col justify-center space-y-6 text-center md:text-left order-last md:order-first">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-purple-900 leading-tight hero-text">
+                    Smart Lending for Modern Business
+                </h1>
+                <p class="text-lg sm:text-xl text-purple-600 hero-desc max-w-md mx-auto md:mx-0">
+                    Streamline your vendor financing with our intelligent platform.
+                </p>
+                <div class="flex justify-center md:justify-start">
+                    <button class="bg-purple-900 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg hover:bg-purple-800 hero-cta">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image flex items-center justify-center order-first md:order-last">
+                <div class="relative w-full max-w-[400px] md:max-w-[500px] aspect-square rounded-2xl overflow-hidden shadow-2xl group">
+                    <div class="absolute inset-0 bg-gradient-to-br from-purple-200 to-purple-300 opacity-50 group-hover:opacity-30 transition-opacity duration-300"></div>
+                    <img 
+                        src="vendor.png" 
+                        alt="Vendor Financing" 
+                        class="absolute inset-0 w-full h-full object-contain object-center scale-90 group-hover:scale-100 transition-transform duration-300"
+                    >
+                    <div class="absolute inset-0 border-4 border-purple-400 border-opacity-50 rounded-2xl pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-purple-50 py-24 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <!-- About Visualization -->
+            <div class="about-visualization relative">
+                <div class="absolute -top-16 -left-16 w-64 h-64 bg-purple-200 rounded-full opacity-30 blob-animation"></div>
+                <div class="relative z-10 about-image-container">
+                    <img 
+                        src="about-vendor.png" 
+                        alt="VendorLoan Process" 
+                        class="rounded-2xl shadow-2xl transform transition-transform duration-300 hover:scale-105"
+                    >
+                </div>
+                <div class="absolute -bottom-16 -right-16 w-64 h-64 bg-purple-300 rounded-full opacity-30 blob-animation"></div>
+            </div>
+            <!-- About Content -->
+            <div class="space-y-8 about-content">
+                <div class="overflow-hidden">
+                    <h2 class="text-5xl font-bold text-purple-900 about-title">
+                        Revolutionizing Vendor Financing
+                    </h2>
+                </div>
+                <div class="overflow-hidden">
+                    <p class="text-xl text-purple-600 about-description">
+                        VendorLoan is transforming how businesses manage vendor relationships and financial transactions. Our intelligent platform leverages cutting-edge technology to streamline lending processes.
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 about-features">
+                    <div class="bg-white p-6 rounded-xl shadow-md feature-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-purple-900 mb-2">Instant Approval</h3>
+                        <p class="text-purple-600">Rapid credit decisions within minutes.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md feature-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-purple-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 100-4 2 2 0 000 4z" />
+                        </svg>
+                        <h3 class="text-xl font-semibold text-purple-900 mb-2">Low Rates</h3>
+                        <p class="text-purple-600">Competitive financing options.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal fixed inset-0 bg-purple-900/50 flex items-center justify-center z-[100]" id="loginModal">
+        <div class="bg-white w-[900px] rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 shadow-2xl transform transition-all duration-300 scale-95 opacity-0">
+            <!-- Mobile-first layout, changes will work for both mobile and desktop -->
+            <div class="hidden md:block bg-gradient-to-br from-purple-600 to-purple-800">
+                <img src="login-image.png" alt="Login Illustration" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6 md:p-12 relative">
+                <button class="absolute top-4 left-4 text-purple-400 hover:text-purple-600" onclick="toggleModal('loginModal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </button>
+                <h2 class="text-3xl font-bold mb-6 text-purple-900 text-center">Welcome Back</h2>
+                <form id="loginForm" class="space-y-6">
+                    <div>
+                        <label class="block text-purple-700 mb-2">Email</label>
+                        <input type="email" id="loginEmail" required placeholder="Enter your email" class="w-full p-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        <p class="text-red-500 text-sm mt-1 hidden" id="loginEmailError">Please enter a valid email</p>
+                    </div>
+                    <div>
+                        <label class="block text-purple-700 mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password" id="loginPassword" required placeholder="Enter your password" class="w-full p-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-purple-500 togglePassword">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-red-500 text-sm mt-1 hidden" id="loginPasswordError">Password must be at least 6 characters</p>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-900 text-white py-3 rounded-lg hover:bg-purple-800 transition">
+                        Login
+                    </button>
+                    <p class="text-center text-sm text-purple-600 mt-4">
+                        Don't have an account? 
+                        <a href="#" class="text-purple-900 font-bold" onclick="switchToSignup()">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fixed inset-0 bg-purple-900/50 flex items-center justify-center z-[100]" id="signupModal">
+        <div class="bg-white w-[1100px] rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-5 shadow-2xl transform transition-all duration-300 scale-95 opacity-0">
+            <!-- Mobile-first layout, changes will work for both mobile and desktop -->
+            <div class="hidden md:flex md:col-span-3 bg-gradient-to-br from-purple-600 to-purple-800 items-center justify-center relative">
+                <img src="vendor.png" alt="Vendor Illustration" class="absolute inset-0 w-full h-full object-cover opacity-20">
+                <div class="z-10 text-center text-white p-8">
+                    <h3 class="text-4xl font-bold mb-4">VendorLoan</h3>
+                    <p class="text-xl">Unlock seamless vendor financing with just a few clicks</p>
+                </div>
+            </div>
+            <div class="col-span-1 md:col-span-2 p-6 md:p-12 flex flex-col justify-center relative">
+                <button class="absolute top-4 left-4 text-purple-400 hover:text-purple-600" onclick="toggleModal('signupModal')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </button>
+                <h2 class="text-3xl font-bold mb-6 text-purple-900 text-center">Create Account</h2>
+                <form id="signupForm" class="space-y-6">
+                    <div>
+                        <label class="block text-purple-700 mb-2">Full Name</label>
+                        <input type="text" id="signupName" required placeholder="Enter your full name" class="w-full p-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        <p class="text-red-500 text-sm mt-1 hidden" id="signupNameError">Please enter your full name</p>
+                    </div>
+                    <div>
+                        <label class="block text-purple-700 mb-2">Email</label>
+                        <input type="email" id="signupEmail" required placeholder="Enter your email" class="w-full p-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        <p class="text-red-500 text-sm mt-1 hidden" id="signupEmailError">Please enter a valid email</p>
+                    </div>
+                    <div>
+                        <label class="block text-purple-700 mb-2">Password</label>
+                        <div class="relative">
+                            <input type="password" id="signupPassword" required placeholder="Create a strong password" class="w-full p-3 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                            <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-purple-500 togglePassword">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                        <p class="text-red-500 text-sm mt-1 hidden" id="signupPasswordError">Password must be at least 8 characters</p>
+                    </div>
+                    <button type="submit" class="w-full bg-purple-900 text-white py-3 rounded-lg hover:bg-purple-800 transition">
+                        Sign Up
+                    </button>
+                    <p class="text-center text-sm text-purple-600 mt-4">
+                        Already have an account? 
+                        <a href="#" class="text-purple-900 font-bold" onclick="switchToLogin()">Log in</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="index_script.js"></script>
+
+</body>
+</html>
