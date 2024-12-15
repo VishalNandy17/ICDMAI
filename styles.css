@@ -1,148 +1,317 @@
-
-body {
-    font-family: 'Space Grotesk', sans-serif;
-}
-.modal {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-.modal.active {
-    opacity: 1;
-    pointer-events: all;
-}
-.input-error {
-    border-color: theme('colors.red.500');
-    ring-color: theme('colors.red.500');
-}
-
-/* Mobile Responsiveness Additions */
-@media (max-width: 768px) {
-    /* Navigation Adjustments */
-    .mobile-menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(88, 28, 135, 0.95);
-        z-index: 60;
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .mobile-menu-overlay.active {
-        display: flex;
-    }
-    .mobile-menu-overlay a {
-        color: white;
-        font-size: 1.5rem;
-        margin: 1rem 0;
-    }
-    
-    /* Modal Adjustments */
-    .modal > div {
-        width: 95%;
-        max-width: 500px;
-        max-height: 90vh;
-        overflow-y: auto;
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-    
-    /* Signup Modal Specific */
-    #signupModal .grid-cols-5 {
-        grid-template-columns: 1fr;
-    }
-    
-    /* Prevent horizontal scrolling */
-    body, html {
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-}
-
-
-/* Enhanced Mobile Menu Styles */
-.mobile-menu-overlay {
-    background: linear-gradient(135deg, rgba(88, 28, 135, 0.95) 0%, rgba(126, 58, 242, 0.95) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-100%);
-    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
-    will-change: transform;
-}
-
-.mobile-menu-overlay.active {
-    transform: translateY(0);
-}
-
-.mobile-nav-link {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    display: inline-block;
-}
-
-.mobile-menu-overlay.active .mobile-nav-link {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-menu-overlay .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
-.mobile-menu-overlay .mobile-nav-link:nth-child(2) { transition-delay: 0.2s; }
-.mobile-menu-overlay .mobile-nav-link:nth-child(3) { transition-delay: 0.3s; }
-.mobile-menu-overlay .mobile-nav-link:nth-child(4) { transition-delay: 0.4s; }
-
-/* Hamburger Menu Animation */
-.hamburger-menu {
-    width: 30px;
-    height: 20px;
+/* Add these styles */
+.world-map {
     position: relative;
-    transform: rotate(0deg);
-    transition: 0.5s ease-in-out;
-    cursor: pointer;
-}
-
-.hamburger-menu span {
-    display: block;
-    position: absolute;
-    height: 3px;
     width: 100%;
-    background: #581C87;
-    border-radius: 9px;
-    opacity: 1;
+    height: 400px;
+    
+    }
+    
+    #globeCanvas {
+    position: absolute;
+    top: 0;
     left: 0;
-    transform: rotate(0deg);
-    transition: 0.25s ease-in-out;
-}
-
-.hamburger-menu span:nth-child(1) {
-    top: 0px;
-}
-
-.hamburger-menu span:nth-child(2) {
-    top: 10px;
-}
-
-.hamburger-menu span:nth-child(3) {
-    top: 20px;
-}
-
-.hamburger-menu.open span:nth-child(1) {
-    top: 10px;
-    transform: rotate(135deg);
-}
-
-.hamburger-menu.open span:nth-child(2) {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    }
+    
+    #globeCanvas:active {
+    cursor: grabbing;
+    }
+    
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .modal {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .input-error {
+            border-color: theme('colors.red.500');
+            ring-color: theme('colors.red.500');
+        }
+        
+        /* Mobile Responsiveness Additions */
+        @media (max-width: 768px) {
+            /* Navigation Adjustments */
+            .mobile-menu-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(88, 28, 135, 0.95);
+                z-index: 60;
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .mobile-menu-overlay.active {
+                display: flex;
+            }
+            .mobile-menu-overlay a {
+                color: white;
+                font-size: 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            /* Modal Adjustments */
+            .modal > div {
+                width: 95%;
+                max-width: 500px;
+                max-height: 90vh;
+                overflow-y: auto;
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+            
+            /* Signup Modal Specific */
+            #signupModal .grid-cols-5 {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Prevent horizontal scrolling */
+            body, html {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+        }
+    
+    
+    
+        /* Enhanced Mobile Menu Styles */
+        .mobile-menu-overlay {
+            background: linear-gradient(135deg, rgba(88, 28, 135, 0.95) 0%, rgba(126, 58, 242, 0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+            will-change: transform;
+        }
+    
+        .mobile-menu-overlay.active {
+            transform: translateY(0);
+        }
+    
+        .mobile-nav-link {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            display: inline-block;
+        }
+    
+        .mobile-menu-overlay.active .mobile-nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .mobile-menu-overlay .mobile-nav-link:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-menu-overlay .mobile-nav-link:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-menu-overlay .mobile-nav-link:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-menu-overlay .mobile-nav-link:nth-child(4) { transition-delay: 0.4s; }
+    
+        /* Hamburger Menu Animation */
+        .hamburger-menu {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: 0.5s ease-in-out;
+            cursor: pointer;
+        }
+    
+        .hamburger-menu span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #581C87;
+            border-radius: 9px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: 0.25s ease-in-out;
+        }
+    
+        .hamburger-menu span:nth-child(1) {
+            top: 0px;
+        }
+    
+        .hamburger-menu span:nth-child(2) {
+            top: 10px;
+        }
+    
+        .hamburger-menu span:nth-child(3) {
+            top: 20px;
+        }
+    
+        .hamburger-menu.open span:nth-child(1) {
+            top: 10px;
+            transform: rotate(135deg);
+        }
+    
+        .hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+            left: -60px;
+        }
+    
+        .hamburger-menu.open span:nth-child(3) {
+            top: 10px;
+            transform: rotate(-135deg);
+        }
+    
+    
+    
+    
+        @keyframes blobAnimation {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(180deg); }
+        }
+    
+        .animate-blob {
+            animation: blobAnimation 10s ease-in-out infinite;
+        }
+    
+        @keyframes pulseBorder {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.3; }
+        }
+    
+        .animate-pulse-border {
+            animation: pulseBorder 4s infinite;
+        }
+    
+    /* Progress Bar Container */
+    .scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(88, 28, 135, 0.1); /* Purple tint */
+    z-index: 1000;
+    }
+    
+    /* Progress Bar */
+    .scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(
+        90deg,
+        #581C87,  /* Purple-900 */
+        #7E3AF2,  /* Purple-600 */
+        #8B5CF6   /* Purple-500 */
+    );
+    transition: width 0.05s ease;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+    }
+    
+    /* Floating Percentage Indicator */
+    .scroll-percentage {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(88, 28, 135, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
     opacity: 0;
-    left: -60px;
-}
-
-.hamburger-menu.open span:nth-child(3) {
-    top: 10px;
-    transform: rotate(-135deg);
-}
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .scroll-percentage.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+    
+    /* Progress Bar Hover Effect */
+    .scroll-progress-container:hover .scroll-progress-bar {
+    height: 6px;
+    transition: height 0.2s ease;
+    }
+    
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+    .scroll-percentage {
+        bottom: 10px;
+        right: 10px;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+    }
+    
+        /* Pattern Grid Animation */
+        .pattern-grid {
+            background-image: radial-gradient(circle, #8B5CF6 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: patternFloat 20s linear infinite;
+        }
+        
+        @keyframes patternFloat {
+            0% { background-position: 0 0; }
+            100% { background-position: 30px 30px; }
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        /* Stats Animation */
+        .stat-number {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #8B5CF6, transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .success-card:hover .stat-number::after {
+            transform: scaleX(1);
+        }
+        
+        /* Progress Bar Animation */
+        @keyframes progressFill {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .metrics-container .progress-bar.animate {
+            animation: progressFill 1.5s ease-out forwards;
+        }
